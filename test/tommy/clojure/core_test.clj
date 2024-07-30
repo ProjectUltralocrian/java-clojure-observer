@@ -1,7 +1,12 @@
 (ns tommy.clojure.core-test
-  (:require [clojure.test :refer :all]
-            [tomsy.core :refer :all]))
+    (:require [clojure.test :refer :all]
+              [tommy.clojure.main :refer :all])
+    (:import [com.tommy.java Window]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest create-window
+    (testing "Can create a window"
+        (let [window (new Window)]
+            (doto window
+                (.setName "Test"))
+            (is (= (.getName window) "Test"))
+            (is (= (get (.getSize window) 0) 600)))))

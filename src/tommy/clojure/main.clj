@@ -7,8 +7,7 @@
         (.clickOk wnd)))
 
 (defn print-size [wnd]
-    (let [width (get (.getSize wnd) 0)
-          height (get (.getSize wnd) 1)
+    (let [[width height] (.getSize wnd)
           name (clojure.string/upper-case (.getName wnd))
           msg (format "Window - name: %s, size: width %d, height %d" name width height)]
         (println msg)))
@@ -17,7 +16,7 @@
     (.clickExit wnd))
 
 (defn main-window-loop []
-    (let [window (Window.)]
+    (let [window (new Window)]
         (loop [turn 1]
             (println "TURN: " turn)
             (doto

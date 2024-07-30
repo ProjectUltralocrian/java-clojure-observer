@@ -32,9 +32,9 @@ public class Window {
     }
     public void clickExit() {
         exitButton.click();
-        deregisterListeners();
+        unregisterListeners();
     }
-    public void deregisterListeners() {
+    public void unregisterListeners() {
         okButton.deRegisterListener(okButtonListener);
         exitButton.deRegisterListener(exitButtonListener);
     }
