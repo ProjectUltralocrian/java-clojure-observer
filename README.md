@@ -1,10 +1,15 @@
-# tomsy
+# tommy
 
-A Clojure library designed to ... well, that part is up to you.
+A simple practice project consisting of a sandbox Clojure app and a Java library.
+It demonstrates a simple implementation of the observer pattern, through the simulation
+of a GUI: a mock window (listener) and two buttons (broadcasters).
+
+Might be extended in the future for the purpose of practicing various other programming 
+techniques on the JVM.
 
 ## Usage
 
-FIXME
+Run the -main function in main.clj, or load its functions and run them individually in the repl.
 
 ## License
 
