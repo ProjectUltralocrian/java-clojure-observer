@@ -21,6 +21,24 @@ public class Window {
     private boolean _running = true;
     public boolean isRunning() { return _running; }
 
+    private final Button okButton = new Button("OK");
+    private final Button exitButton = new Button("EXIT");
+    public Window() {
+        okButton.registerListener(okButtonListener);
+        exitButton.registerListener(exitButtonListener);
+    }
+    public void clickOk() {
+        okButton.click();
+    }
+    public void clickExit() {
+        exitButton.click();
+        deregisterListeners();
+    }
+    public void deregisterListeners() {
+        okButton.deRegisterListener(okButtonListener);
+        exitButton.deRegisterListener(exitButtonListener);
+    }
+
     private final Listener okButtonListener = (Object o, String msg) -> {
         if (!_running) return;
         System.out.println(msg);
@@ -42,29 +60,10 @@ public class Window {
         }
     };
 
-    private final Button okButton = new Button("OK");
-    private final Button exitButton = new Button("EXIT");
-    public Window() {
-        okButton.registerListener(okButtonListener);
-        exitButton.registerListener(exitButtonListener);
-    }
-    public void clickOk() {
-        okButton.click();
-    }
-    public void clickExit() {
-        exitButton.click();
-        deregisterListeners();
-    }
-    public void deregisterListeners() {
-        okButton.deRegisterListener(okButtonListener);
-        exitButton.deRegisterListener(exitButtonListener);
-    }
-    
-    
-    /**
-     * The button listeners could also be implemented by making the Window class itself implement
-     * the Listener interface, and adding an overridden onEvent method, as shown below.
-     * However, this is probably less readable and more error-prone.
+    /*
+      The button listeners could also be implemented by making the Window class itself implement
+      the Listener interface, and adding an overridden onEvent method, as shown below.
+      However, this is probably less readable and more error-prone.
      */
     /*
     @Override

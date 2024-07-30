@@ -17,9 +17,7 @@
     (.clickExit wnd))
 
 (defn main-window-loop []
-
     (let [window (Window.)]
-
         (loop [turn 1]
             (println "TURN: " turn)
             (doto
@@ -28,16 +26,13 @@
                 (.setName "Tommy")
                 (.clickOk)
                 (.clickOk))
-
             (click-times window 5)
             (print-size window)
             (when (= turn 3)
                 (exit-window window))
-
             (if (.isRunning window)
                 (recur (inc turn))
                 :finished-successfully))))
-
 
 (defn -main []
     (main-window-loop))
