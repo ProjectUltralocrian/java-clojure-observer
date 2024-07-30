@@ -18,27 +18,25 @@
 
 (defn main-window-loop []
 
-    (loop [window (Window.)]
+    (let [window (Window.)]
 
-        (doto
-            window
-            (.setSize 666 333)
-            (.setName "Tommy")
-            (.clickOk)
-            (.clickOk))
+        (loop [turn 1]
+            (println "TURN: " turn)
+            (doto
+                window
+                (.setSize 666 333)
+                (.setName "Tommy")
+                (.clickOk)
+                (.clickOk))
 
-        (click-times window 5)
-        (print-size window)
-        (exit-window window)
+            (click-times window 5)
+            (print-size window)
+            (when (= turn 3)
+                (exit-window window))
 
-        ;;this does nothing, since the listeners are deregistered as part of the clickExit() method
-        ;;of the Window class.
-        (doto window
-            (.deregisterListeners))
-
-        (if (.isRunning window)
-            (recur window)
-            :finished-successfully)))
+            (if (.isRunning window)
+                (recur (inc turn))
+                :finished-successfully))))
 
 
 (defn -main []
